@@ -12,37 +12,6 @@ ccxt库是可用的密码_交换_或交换类的集合。每个类为特定的�
 
 库的结构可以概述如下：
 
-
-
-| CCXT |  |
-| :---: | :---: |
-| Public | Private |
-| The Unified CCXT API |  |
-| loadMarkets | fetchBalance |
-| fetchMarkets | createOrder |
-| fetchCurrencies | cancelOrder |
-| fetchTicker | fetchOrder |
-| fetchTickers | fetchOrders |
-| fetchOrderBook | fetchOpenOrders |
-| fetchOHLCV | fetchClosedOrders |
-| fetchStatus | fetchMyTrades |
-| fetchTrades | deposit |
-|  | withdraw |
-|  |  |
-
-| --- | --- |
-| :--- | :--- |
-| Custom Exchange API |  |
-| \(Derived Classes And Their Implicit Methods\) |  |
-|  |  |
-| publicGet... | privateGet... |
-| publicPost... | privatePost... |
-| privatePut... |  |
-| privateDelete... |  |
-| sign |  |
-|  |  |
-| Base Exchange Class |  |
-
 ```text
 User
     +-------------------------------------------------------------+
