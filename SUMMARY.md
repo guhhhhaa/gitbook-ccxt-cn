@@ -18,5 +18,5 @@
 * [ccxt-专业版](ccxt-pro.md)
 * [ccxt-专业版-安装](ccxt-pro-install.md)
 * [ccxt-专业版-手册](ccxt-pro-manual.md)
-* [Examples](examples.md)
+* [范例](examples.md)
 
