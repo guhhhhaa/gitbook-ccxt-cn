@@ -5,7 +5,7 @@
 * [certification](certification.md)
 * [contributing](contributing.md)
 * [支持的交易所\(按国家分\)](exchange-markets-by-country.md)
-* [exchange-markets交易市场](exchange-markets.md)
+* [支持的加密货币交易所](exchange-markets.md)
 * [faq常问问题](faq.md)
 * [install安装](install.md)
 * [integration-faq整合常见问题](integration-faq.md)
