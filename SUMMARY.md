@@ -11,7 +11,7 @@
 * [安装](install.md)
 * [整合常见问题](integration-faq.md)
 * [问题模板](issue-template.md)
-* [manual](manual.md)
+* [手册](manual.md)
 * [requirements](requirements.md)
 * [stats](stats.md)
 * [websocket-support](websocket-support.md)
