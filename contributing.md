@@ -1,8 +1,4 @@
----
-description: contributing
----
-
-# 贡献
+# contributing
 
 ## 贡献
 

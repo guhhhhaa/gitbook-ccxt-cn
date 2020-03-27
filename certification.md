@@ -1,8 +1,4 @@
----
-description: certification
----
-
-# 资质认证
+# certification
 
 ## 资质认证
 
