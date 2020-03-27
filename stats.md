@@ -1,8 +1,4 @@
----
-description: stats
----
-
-# 统计资料
+# stats
 
 ## 统计资料
 
