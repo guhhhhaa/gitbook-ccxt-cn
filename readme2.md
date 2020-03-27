@@ -1,4 +1,4 @@
-# 自述2
+# README2
 
 ## CCXT - 加密货币交易所接口库
 
@@ -281,7 +281,7 @@ exchange.method_name () //  下划线命名法
 
 #### JavaScript
 
-```javascript
+```text
 'use strict';
 const ccxt = require ('ccxt');
 
@@ -318,7 +318,7 @@ const ccxt = require ('ccxt');
 
 #### Python
 
-```python
+```text
 # coding=utf-8
 
 import ccxt
@@ -355,7 +355,7 @@ kraken.create_market_buy_order('BTC/USD', 1, {'trading_agreement': 'agree'})
 
 #### PHP
 
-```php
+```text
 include 'ccxt.php';
 
 $poloniex = new \ccxt\poloniex ();

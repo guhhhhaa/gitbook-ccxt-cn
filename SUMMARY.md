@@ -12,7 +12,7 @@
 * [整合常见问题](integration-faq.md)
 * [问题模板](issue-template.md)
 * [手册](manual.md)
-* [requirements](requirements.md)
+* [要求](requirements.md)
 * [stats](stats.md)
 * [websocket-support](websocket-support.md)
 * [ccxt-pro](ccxt-pro.md)
