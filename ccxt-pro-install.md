@@ -1,8 +1,4 @@
----
-description: ccxt-pro-install
----
-
-# ccxt-专业版-安装
+# ccxt-pro-install
 
 ## ccxt.pro.install
 

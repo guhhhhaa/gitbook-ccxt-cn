@@ -15,8 +15,8 @@
 * [要求](requirements.md)
 * [统计资料](stats.md)
 * [WebSocket支持](websocket-support.md)
-* [ccxt-pro](ccxt-pro.md)
+* [ccxt-专业版](ccxt-pro.md)
 * [ccxt-专业版-安装](ccxt-pro-install.md)
-* [ccxt-pro-manual](ccxt-pro-manual.md)
+* [ccxt-专业版-手册](ccxt-pro-manual.md)
 * [Examples](examples.md)
 
