@@ -1,8 +1,4 @@
----
-description: Examples
----
-
-# 范例
+# Examples
 
 ## CCXT Cryptocurrency Trading Library Examples
 
