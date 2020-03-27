@@ -4,8 +4,6 @@ description: requirements
 
 # 要求
 
-
-
 ## 要求
 
 为了实现与CCXT的集成，需要交换以实现以下方法和结构列表。
