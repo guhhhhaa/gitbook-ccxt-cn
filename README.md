@@ -1,8 +1,4 @@
----
-description: readme
----
-
-# 自述
+# README
 
 ## 如何使用
 
@@ -35,18 +31,17 @@ Welcome to the ccxt wiki! 欢迎来到 CCXT 百科！
 
 ### 安装 · 用法 · [手册](https://github.com/ccxt/ccxt/wiki) · [FAQ](https://github.com/ccxt/ccxt/wiki/FAQ) · [实例](https://github.com/ccxt/ccxt/tree/master/examples) · [奉献](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md) · 社会 <a id="install-usage-manual-faq-examples-contributing-social"></a>
 
-**CCXT** 库可用于世界各地的加密货币/山寨币交易所的连接和交易，以及转账支付处理服务。它提供了快速访问市场数据的途径，可用于存储数据，分析，可视化，指标开发，算法交易，策略回测，机器人程序，网上商店集成及其它相关的软件工程。
+该**CCXT**库是用于连接并与世界各地的交流cryptocurrency和支付处理服务贸易。它提供对市场数据的快速访问，以进行存储，分析，可视化，指标开发，算法交易，策略回测，自动程序编程和相关软件工程。
 
-它可被**程序员，开发工程师，技术熟练的交易员，数据科学家和财务分析师**用于在其基础上构建交易算法。
+它旨在供**编码人员，开发人员，技术熟练的交易员，数据科学家和财务分析人员**用来构建交易算法。
 
-当前具有的特性：
+当前功能列表：
 
-* 支持许多交易所，并将添加更多
-* 为上述交易所实现了全部公共和私有 API
-* 所有货币，山寨币和交易对，价格，订单簿，交易，行情等...
-* 可选的用于跨交易所或跨币种分析和套利的标准化数据
-* 一个非常容易集成的开箱即用的统一 API
-* 可在 Node 7.6+，Python 2 和 3，PHP 5.3+ 及 Web 浏览器中使用
+* 支持许多加密货币交易所-即将推出更多
+* 完全实现的公共和私有API
+* 用于交叉交换分析和套利的可选规范化数据
+* 开箱即用的统一API，非常易于集成
+* 适用于Node 7.6 +，Python 2和3，PHP 5.4+和Web浏览器
 
 ## 赞助促销 <a id="sponsored-promotion"></a>
 
@@ -345,19 +340,19 @@ CCXT库支持驼峰表示法（在JavaScript中为首选）和下划线表示法
 
 阅读[手册](https://github.com/ccxt/ccxt/wiki)以获取更多详细信息。
 
-### JavaScript <a id="javascript"></a>
+### 的JavaScript <a id="javascript"></a>
 
 ```text
 “严格使用” ；const ccxt = require （'ccxt' ）;  ​（异步功能（）{       让kraken     = new ccxt 。海妖（）       让bitfinex   = new ccxt 。bitfinex （{ verbose ：true } ）         让huobipro   = new ccxt 。huobipro （）       让okcoinusd = new ccxt 。okcoinusd （{           apiKey ：'YOUR_PUBLIC_API_KEY' ，         机密：“ YOUR_SECRET_PRIVATE_KEY” ，     } ）​    const exchangeId = 'binance'         ，exchangeClass = ccxt [ exchangeId ]        ，exchange = new exchangeClass （{               'apiKey' ：'YOUR_API_KEY' ，             'secret' ：'YOUR_SECRET' ，             '超时' ：30000 ，             'enableRateLimit' ：true ，         } ）​    控制台。日志（海妖。ID ，AWAIT 海妖。loadMarkets （））          控制台。日志（bitfinex 。ID ，AWAIT bitfinex 。loadMarkets （））         控制台。日志（huobipro 。ID ，AWAIT huobipro 。loadMarkets （））    ​    控制台。日志（海妖。ID ，AWAIT 海妖。fetchOrderBook （海妖。符号[ 0 ] ））          控制台。日志（bitfinex 。ID ，AWAIT bitfinex 。fetchTicker （'BTC / USD' ））        控制台。日志（huobipro 。ID ，AWAIT huobipro 。fetchTrades （'ETH /人民币' ））    ​    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。fetchBalance （））   ​    //以市价卖出1 BTC / USD，立即以美元卖出比特币    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。createMarketSellOrder （'BTC / USD' ，1 ））    ​    //以2500美元的价格购买1个BTC / USD，您支付2500美元，并在结单时收到฿1    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。createLimitBuyOrder （'BTC / USD' ，1 ，2500.00 ））     ​    //通过/定义自定义交易所特定的订单参数：类型，金额，价格或其他    //使用自定义订单类型    bitfinex 。createLimitSellOrder （'BTC / USD' ，1 ，10 ，{ '类型' ：'后停止' } ）       ​} ）（）; 
 ```
 
-### Python <a id="python-1"></a>
+### 蟒蛇 <a id="python-1"></a>
 
 ```text
 ＃编码= utf-8​导入ccxt​hitbtc    = ccxt 。hitbtc （{ 'verbose' ：True } ） bitmex    = ccxt 。bitmex （）huobipro = ccxt 。业余爱好（）exmo      = ccxt 。例子（{    'apiKey' ：'YOUR_PUBLIC_API_KEY' ，     '秘密' ：'YOUR_SECRET_PRIVATE_KEY' ， } ）裂纹= ccxt 。破解（{    'apiKey' ：'YOUR_PUBLIC_API_KEY' ，     '秘密' ：'YOUR_SECRET_PRIVATE_KEY' ， } ）​exchange_id = 'binance' exchange_class = getattr （ccxt ，exchange_id ） exchange = exchange_class （{    'apiKey' ：'YOUR_API_KEY' ，     'secret' ：'YOUR_SECRET' ，     '超时' ：30000 ，     'enableRateLimit' ：真， } ）​hitbtc_markets = hitbtc 。load_markets （）​打印（hitbtc 。ID ，hitbtc_markets ）打印（bitmex 。ID ，bitmex 。load_markets （））打印（huobipro 。ID ，huobipro 。load_markets （））​打印（hitbtc 。fetch_order_book （hitbtc 。符号[ 0 ] ））打印（bitmex 。fetch_ticker （'BTC / USD' ））打印（huobipro 。fetch_trades （'LTC /人民币' ））​打印（汉。fetch_balance （））​＃以市价卖出1英镑，立即获得$打印（exmo 。ID ，exmo 。create_market_sell_order （'BTC / USD' ，1 ）） ​＃限价购买BTC / EUR，您支付€2500并在结单时收到when1打印（汉。ID ，汉。create_limit_buy_order （“BTC / EUR' ，1 ，2500.00 ））  ​＃传递/定义自定义交易所特定的订单参数：类型，金额，价格，标志等。海妖。create_market_buy_order （'BTC / USD' ，1 ，{ 'trading_agreement' ：'agree' } ）   
 ```
 
-### PHP <a id="php-1"></a>
+### 的PHP <a id="php-1"></a>
 
 ```text
 包括'ccxt.php' ; ​$ poloniex = 新\ ccxt \ poloniex （）;    $ bittrex = 新\ ccxt \ bittrex （数组（'verbose' = > true ））;         $ quoinex = 新\ ccxt \ quoinex （）;       $弱= 新\ ccxt \ 弱（数组（                 'apiKey' = > 'YOUR_PUBLIC_API_KEY' ，      '秘密' = > 'YOUR_SECRET_PRIVATE_KEY' ，  ））;$ hitbtc = new \ ccxt \ hitbtc （array （             'apiKey' = > 'YOUR_PUBLIC_API_KEY' ，      '秘密' = > 'YOUR_SECRET_PRIVATE_KEY' ，  ））;​$ exchange_id = 'binary' ;  $ exchange_class = “ \\ ccxt \\ $ exchange_id” ;  $ exchange = 新的$ exchange_class （数组（         'apiKey' = > 'YOUR_API_KEY' ，      '秘密' = > 'YOUR_SECRET' ，      '超时' = > 30000 ，      'enableRateLimit' = > true ，  ））;​$ poloniex_markets = $ poloniex - > load_markets （）;   ​var_dump （$ poloniex_markets ）;后续代码var_dump （$ bittrex - > load_markets （））; 后续代码var_dump （$ quoinex - > load_markets （））; ​的var_dump （$ poloniex - > fetch_order_book （$ poloniex - > 符号[ 0 ] ））; 的var_dump （$ bittrex - > fetch_trades （'BTC / USD' ）） ; 后续代码var_dump （$ quoinex - > fetch_ticker （'ETH / EUR' ）） ; 的var_dump （$ zaif - > fetch_ticker （'BTC / JPY' ）） ; ​后续代码var_dump （$ zaif - > fetch_balance （））; ​//以市价卖出1 BTC / JPY，您支付¥并立即收到฿的var_dump （$ zaif - > ID ，$ zaif - > create_market_sell_order （'BTC / JPY' ，1 ））;   ​//购买BTC / JPY，当订单关闭时，您会收到¥285000的฿1的var_dump （$ zaif - > ID ，$ zaif - > create_limit_buy_order （'BTC / JPY' ，1 ，285000 ））;    ​//为您的订单设置一个自定义的用户定义ID$ hitbtc - > create_order （'BTC / USD' ，'限制' ，'买入' ，1 ，3000 ，阵列（'clientOrderId' = > '123' ）） ;         
