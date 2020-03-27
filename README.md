@@ -273,7 +273,7 @@ CDN不会实时更新，可能会有延迟。不建议默认为最新版本而�
 docker-compose运行--rm ccxt
 ```
 
-## 文献资料 <a id="documentation"></a>
+## 文献资料  <a id="documentation"></a>
 
 阅读[手册](https://github.com/ccxt/ccxt/wiki)以获取更多详细信息。
 
