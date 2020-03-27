@@ -341,19 +341,19 @@ CCXT库支持驼峰表示法（在JavaScript中为首选）和下划线表示法
 
 阅读[手册](https://github.com/ccxt/ccxt/wiki)以获取更多详细信息。
 
-### 的JavaScript <a id="javascript"></a>
+### JavaScript <a id="javascript"></a>
 
 ```text
 “严格使用” ；const ccxt = require （'ccxt' ）;  ​（异步功能（）{       让kraken     = new ccxt 。海妖（）       让bitfinex   = new ccxt 。bitfinex （{ verbose ：true } ）         让huobipro   = new ccxt 。huobipro （）       让okcoinusd = new ccxt 。okcoinusd （{           apiKey ：'YOUR_PUBLIC_API_KEY' ，         机密：“ YOUR_SECRET_PRIVATE_KEY” ，     } ）​    const exchangeId = 'binance'         ，exchangeClass = ccxt [ exchangeId ]        ，exchange = new exchangeClass （{               'apiKey' ：'YOUR_API_KEY' ，             'secret' ：'YOUR_SECRET' ，             '超时' ：30000 ，             'enableRateLimit' ：true ，         } ）​    控制台。日志（海妖。ID ，AWAIT 海妖。loadMarkets （））          控制台。日志（bitfinex 。ID ，AWAIT bitfinex 。loadMarkets （））         控制台。日志（huobipro 。ID ，AWAIT huobipro 。loadMarkets （））    ​    控制台。日志（海妖。ID ，AWAIT 海妖。fetchOrderBook （海妖。符号[ 0 ] ））          控制台。日志（bitfinex 。ID ，AWAIT bitfinex 。fetchTicker （'BTC / USD' ））        控制台。日志（huobipro 。ID ，AWAIT huobipro 。fetchTrades （'ETH /人民币' ））    ​    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。fetchBalance （））   ​    //以市价卖出1 BTC / USD，立即以美元卖出比特币    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。createMarketSellOrder （'BTC / USD' ，1 ））    ​    //以2500美元的价格购买1个BTC / USD，您支付2500美元，并在结单时收到฿1    控制台。日志（okcoinusd 。ID ，AWAIT okcoinusd 。createLimitBuyOrder （'BTC / USD' ，1 ，2500.00 ））     ​    //通过/定义自定义交易所特定的订单参数：类型，金额，价格或其他    //使用自定义订单类型    bitfinex 。createLimitSellOrder （'BTC / USD' ，1 ，10 ，{ '类型' ：'后停止' } ）       ​} ）（）; 
 ```
 
-### 蟒蛇 <a id="python-1"></a>
+### Python <a id="python-1"></a>
 
 ```text
 ＃编码= utf-8​导入ccxt​hitbtc    = ccxt 。hitbtc （{ 'verbose' ：True } ） bitmex    = ccxt 。bitmex （）huobipro = ccxt 。业余爱好（）exmo      = ccxt 。例子（{    'apiKey' ：'YOUR_PUBLIC_API_KEY' ，     '秘密' ：'YOUR_SECRET_PRIVATE_KEY' ， } ）裂纹= ccxt 。破解（{    'apiKey' ：'YOUR_PUBLIC_API_KEY' ，     '秘密' ：'YOUR_SECRET_PRIVATE_KEY' ， } ）​exchange_id = 'binance' exchange_class = getattr （ccxt ，exchange_id ） exchange = exchange_class （{    'apiKey' ：'YOUR_API_KEY' ，     'secret' ：'YOUR_SECRET' ，     '超时' ：30000 ，     'enableRateLimit' ：真， } ）​hitbtc_markets = hitbtc 。load_markets （）​打印（hitbtc 。ID ，hitbtc_markets ）打印（bitmex 。ID ，bitmex 。load_markets （））打印（huobipro 。ID ，huobipro 。load_markets （））​打印（hitbtc 。fetch_order_book （hitbtc 。符号[ 0 ] ））打印（bitmex 。fetch_ticker （'BTC / USD' ））打印（huobipro 。fetch_trades （'LTC /人民币' ））​打印（汉。fetch_balance （））​＃以市价卖出1英镑，立即获得$打印（exmo 。ID ，exmo 。create_market_sell_order （'BTC / USD' ，1 ）） ​＃限价购买BTC / EUR，您支付€2500并在结单时收到when1打印（汉。ID ，汉。create_limit_buy_order （“BTC / EUR' ，1 ，2500.00 ））  ​＃传递/定义自定义交易所特定的订单参数：类型，金额，价格，标志等。海妖。create_market_buy_order （'BTC / USD' ，1 ，{ 'trading_agreement' ：'agree' } ）   
 ```
 
-### 的PHP <a id="php-1"></a>
+### PHP <a id="php-1"></a>
 
 ```text
 包括'ccxt.php' ; ​$ poloniex = 新\ ccxt \ poloniex （）;    $ bittrex = 新\ ccxt \ bittrex （数组（'verbose' = > true ））;         $ quoinex = 新\ ccxt \ quoinex （）;       $弱= 新\ ccxt \ 弱（数组（                 'apiKey' = > 'YOUR_PUBLIC_API_KEY' ，      '秘密' = > 'YOUR_SECRET_PRIVATE_KEY' ，  ））;$ hitbtc = new \ ccxt \ hitbtc （array （             'apiKey' = > 'YOUR_PUBLIC_API_KEY' ，      '秘密' = > 'YOUR_SECRET_PRIVATE_KEY' ，  ））;​$ exchange_id = 'binary' ;  $ exchange_class = “ \\ ccxt \\ $ exchange_id” ;  $ exchange = 新的$ exchange_class （数组（         'apiKey' = > 'YOUR_API_KEY' ，      '秘密' = > 'YOUR_SECRET' ，      '超时' = > 30000 ，      'enableRateLimit' = > true ，  ））;​$ poloniex_markets = $ poloniex - > load_markets （）;   ​var_dump （$ poloniex_markets ）;后续代码var_dump （$ bittrex - > load_markets （））; 后续代码var_dump （$ quoinex - > load_markets （））; ​的var_dump （$ poloniex - > fetch_order_book （$ poloniex - > 符号[ 0 ] ））; 的var_dump （$ bittrex - > fetch_trades （'BTC / USD' ）） ; 后续代码var_dump （$ quoinex - > fetch_ticker （'ETH / EUR' ）） ; 的var_dump （$ zaif - > fetch_ticker （'BTC / JPY' ）） ; ​后续代码var_dump （$ zaif - > fetch_balance （））; ​//以市价卖出1 BTC / JPY，您支付¥并立即收到฿的var_dump （$ zaif - > ID ，$ zaif - > create_market_sell_order （'BTC / JPY' ，1 ））;   ​//购买BTC / JPY，当订单关闭时，您会收到¥285000的฿1的var_dump （$ zaif - > ID ，$ zaif - > create_limit_buy_order （'BTC / JPY' ，1 ，285000 ））;    ​//为您的订单设置一个自定义的用户定义ID$ hitbtc - > create_order （'BTC / USD' ，'限制' ，'买入' ，1 ，3000 ，阵列（'clientOrderId' = > '123' ）） ;         
