@@ -31,17 +31,18 @@ Welcome to the ccxt wiki! 欢迎来到 CCXT 百科！
 
 ### 安装 · 用法 · [手册](https://github.com/ccxt/ccxt/wiki) · [FAQ](https://github.com/ccxt/ccxt/wiki/FAQ) · [实例](https://github.com/ccxt/ccxt/tree/master/examples) · [奉献](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md) · 社会 <a id="install-usage-manual-faq-examples-contributing-social"></a>
 
-该**CCXT**库是用于连接并与世界各地的交流cryptocurrency和支付处理服务贸易。它提供对市场数据的快速访问，以进行存储，分析，可视化，指标开发，算法交易，策略回测，自动程序编程和相关软件工程。
+**CCXT** 库可用于世界各地的加密货币/山寨币交易所的连接和交易，以及转账支付处理服务。它提供了快速访问市场数据的途径，可用于存储数据，分析，可视化，指标开发，算法交易，策略回测，机器人程序，网上商店集成及其它相关的软件工程。
 
-它旨在供**编码人员，开发人员，技术熟练的交易员，数据科学家和财务分析人员**用来构建交易算法。
+它可被**程序员，开发工程师，技术熟练的交易员，数据科学家和财务分析师**用于在其基础上构建交易算法。
 
-当前功能列表：
+当前具有的特性：
 
-* 支持许多加密货币交易所-即将推出更多
-* 完全实现的公共和私有API
-* 用于交叉交换分析和套利的可选规范化数据
-* 开箱即用的统一API，非常易于集成
-* 适用于Node 7.6 +，Python 2和3，PHP 5.4+和Web浏览器
+* 支持许多交易所，并将添加更多
+* 为上述交易所实现了全部公共和私有 API
+* 所有货币，山寨币和交易对，价格，订单簿，交易，行情等...
+* 可选的用于跨交易所或跨币种分析和套利的标准化数据
+* 一个非常容易集成的开箱即用的统一 API
+* 可在 Node 7.6+，Python 2 和 3，PHP 5.3+ 及 Web 浏览器中使用
 
 ## 赞助促销 <a id="sponsored-promotion"></a>
 
