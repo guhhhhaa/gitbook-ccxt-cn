@@ -1,8 +1,4 @@
----
-description: manual
----
-
-# 手册
+# manual
 
 ## 手册
 
