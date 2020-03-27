@@ -1,236 +1,389 @@
 # install安装
 
-## 安装
+### 安装 CCXT
 
-## 安装 <a id="install"></a>
+The easiest way to install the ccxt library is to use builtin package managers:
 
-安装ccxt库的最简单方法是使用内置的软件包管理器：
+安装 CCXT 库最简单的办法，就是直接使用内嵌的包管理工具：
 
-* [ccxt在**NPM**](http://npmjs.com/package/ccxt)（JavaScript的/节点V7.6 +）
-* [在ccxt **的PyPI**](https://pypi.python.org/pypi/ccxt)（Python 2和3）
+* [ccxt in **NPM**](http://npmjs.com/package/ccxt) \(JavaScript / Node v7.6+\)
+* [通过 **NPM** 安装 ccxt](http://npmjs.com/package/ccxt) \(JavaScript / Node v7.6+\)
+* [ccxt in **PyPI**](https://pypi.python.org/pypi/ccxt) \(Python 2 and 3\)
+* [通过 **PyPI** 安装 ccxt](https://pypi.python.org/pypi/ccxt) \(Python 2 and 3\)
 
-该库作为具有最小依赖性和要求的多模块模块实现提供：
+This library is shipped as an all-in-one module implementation with minimalistic dependencies and requirements:
 
-* 在JavaScript[`ccxt.js`](https://github.com/ccxt/ccxt/blob/master/ccxt.js)
-* 在Python（从JS生成）[`./python/`](https://github.com/ccxt/ccxt/blob/master/python/)
-* 在PHP（从JS生成）[`ccxt.php`](https://github.com/ccxt/ccxt/blob/master/ccxt.php)
+通过不断地精简 ccxt 所依赖的库和组件，我们把它封装成了一个高度一体化的模块。
 
-您也可以将其从[ccxt GitHub存储](https://github.com/ccxt/ccxt)库克隆到项目目录中，并使用适合您环境的语言扩展[名将](https://github.com/ccxt/ccxt)文件手动复制到工作目录中。
+* [`ccxt.js`](https://github.com/ccxt/ccxt/blob/master/ccxt.js) in JavaScript
+* [`./python/`](https://github.com/ccxt/ccxt/blob/master/python/) in Python \(generated from JS\)
+* [`ccxt.php`](https://github.com/ccxt/ccxt/blob/master/ccxt.php) in PHP \(generated from JS\)
+
+You can also clone it into your project directory from [ccxt GitHub repository](https://github.com/ccxt/ccxt):
+
+你也从 [ccxt 官方仓库](https://github.com/ccxt/ccxt)将其克隆到自己的工程目录下：
 
 ```text
 git clone https://github.com/ccxt/ccxt.git
 ```
 
-安装该库的另一种方法是从源代码构建自定义捆绑包。选择您需要的交流。`exchanges.cfg`
+An alternative way of installing this library into your code is to copy a single file manually into your working directory with language extension appropriate for your environment.
 
-### JavaScript（NPM） <a id="javascript-npm"></a>
+还有一种集成方式，你可以将某个需要使用的代码文件直接拷贝到你的工程目录下。同一个功能文件可能有不同编程语言的多种实现方式，请注意筛选。
 
-ccxt的JavaScript版本可在Node和Web浏览器中使用。需要ES6和语法支持（节点7.6.0+）。使用Webpack和Babel进行编译时，请确保`async/await`[未](https://github.com/ccxt-dev/ccxt/issues/225#issuecomment-331582275)在配置中[排除](https://github.com/ccxt-dev/ccxt/issues/225#issuecomment-331582275)它。`babel-loader`
+#### JavaScript \(NPM\)
 
-[ccxt在NPM密码交易库](http://npmjs.com/package/ccxt)
+JavaScript version of ccxt works both in Node and web browsers. Requires ES6 and `async/await` syntax support \(Node 7.6.0+\). When compiling with Webpack and Babel, make sure it is [not excluded](https://github.com/ccxt-dev/ccxt/issues/225#issuecomment-331582275) in your `babel-loader` config.
+
+JavaScript版本的 ccxt 同时支持在 Node 环境和浏览器环境中运行。需要支持 ES6 和 `async/await` 语法 \(Node 7.6.0+\) 。在你使用 Webpack 和 Babel 进行编译前，请确认当前 `babel-loader` 配置项没有把库文件夹[排除在外](https://github.com/ccxt-dev/ccxt/issues/225#issuecomment-331582275)。
+
+[ccxt crypto trading library in npm](http://npmjs.com/package/ccxt)
+
+[在 npm 中安装加密货币交易库 ccxt](http://npmjs.com/package/ccxt)
 
 ```text
-npm安装ccxt
+npm install ccxt
 ```
 
 ```text
-var ccxt = require （'ccxt' ）  ​控制台。日志（ccxt 。交流）//打印所有可用的交流  
+var ccxt = require ('ccxt')
+
+console.log (ccxt.exchanges) // 输出所有可用交易所
 ```
 
-#### Node.js + Windows <a id="node-js-windows"></a>
+#### JavaScript \(通过 `<script>` 标签调用\):
 
-其安装困难Windows用户，或对ccxt库的依赖，尝试安装第一：`w3scryptnode-gypscrypt`
+[All-in-one browser bundle](https://unpkg.com/ccxt) \(dependencies included\), served from [unpkg CDN](https://unpkg.com/), which is a fast, global content delivery network for everything on NPM.
+
+[一体化浏览器 js 文件](https://unpkg.com/ccxt) \(包括所有依赖项\), 挂靠在 [unpkg CDN](https://unpkg.com/) 下，本 CDN 作为 NPM 内容分发节点之一，速度快、全球均可访问。
 
 ```text
-npm install -g web3 --unsafe-perm = true --allow-root
+<script type="text/javascript" src="https://unpkg.com/ccxt"></script>
 ```
 
-要么
+Creates a global `ccxt` object:
+
+创建全局 `ccxt` 对象:
 
 ```text
-须藤npm install -g web3 --unsafe-perm = true --allow-root
+console.log (ccxt.exchanges) // 输出所有可用交易所
 ```
 
-然后使用照常安装ccxt 。`npm install ccxt`
+#### Python
 
-如果没有帮助，请按以下网址：[https://github.com/nodejs/node-gyp\#on-windows](https://github.com/nodejs/node-gyp#on-windows)
+[ccxt algotrading library in PyPI](https://pypi.python.org/pypi/ccxt)
 
-### JavaScript（用于标记）：`<script>` <a id="javascript-for-use-with-the-less-than-script-greater-than-tag"></a>
-
-通过您选择的CDN提供的多合一浏览器捆绑包（包括依赖项）：
-
-* jsDelivr：[https://cdn.jsdelivr.net/npm/ccxt@1.25.27/dist/ccxt.browser.js](https://cdn.jsdelivr.net/npm/ccxt@1.25.27/dist/ccxt.browser.js)
-* unpkg：[https://unpkg.com/ccxt@1.25.27/dist/ccxt.browser.js](https://unpkg.com/ccxt@1.25.27/dist/ccxt.browser.js)
-
-您可以通过从URL（事物）中删除版本号来获取捆绑包的实时更新版本-但是，我们不建议这样做，因为它最终可能会破坏您的应用程序。另外，请记住，我们对这些CDN服务器的正确操作不承担任何责任。`@a.b.c`
+[PyPI 中的 ccxt 库主页](https://pypi.python.org/pypi/ccxt)
 
 ```text
-< 脚本类型=“ text / javascript ” src =“ https://cdn.jsdelivr.net/npm/ccxt@1.25.27/dist/ccxt.browser.js ” > </ 脚本>  
-```
-
-创建一个全局对象：`ccxt`
-
-```text
-控制台。日志（ccxt 。交流）//打印所有可用的交流  
-```
-
-### 蟒蛇 <a id="python"></a>
-
-[ccxt中的PyPI algotrading库](https://pypi.python.org/pypi/ccxt)
-
-```text
-点安装ccxt
+pip install ccxt
 ```
 
 ```text
-导入ccxt打印（ccxt 。交流）＃打印所有可用的交换类的列表 
+import ccxt
+print(ccxt.exchanges) # 输出一个list，内容为所有可用的交易所
 ```
 
-该库在Python 3.5.3+中支持asyncio和async / await的并发异步模式。
+The library supports concurrent asynchronous mode with asyncio and async/await in Python 3.5.3+
+
+ccxt 库支持通过 concurrent 库的 asyncio 和 async/await 语法实现异步操作（Python 3.5.3+）
 
 ```text
-导入ccxt 。async_support as ccxt ＃链接到ccxt的异步版本
+import ccxt.async as ccxt # link against the asynchronous version of ccxt 引入异步版本的ccxt
 ```
 
-### 的PHP <a id="php"></a>
+#### PHP
 
-ccxt的自动加载版本可以与[**Packagist / Composer**](https://packagist.org/packages/ccxt/ccxt)（PHP 5.4+）一起安装。
+The autoloadable version of ccxt can be installed with [**Packagist/Composer**](https://packagist.org/packages/ccxt/ccxt) \(PHP 5.3+\).
 
-它也可以从源代码安装：[**`ccxt.php`**](https://raw.githubusercontent.com/ccxt/ccxt/master/php)
+可自动加载的 ccxt PHP 组件 [**Packagist/Composer**](https://packagist.org/packages/ccxt/ccxt) \(PHP 5.3+\).
 
-它需要通用的PHP模块：
+It can also be installed from the source code: [**`ccxt.php`**](https://raw.githubusercontent.com/ccxt/ccxt/master/php)
 
-* 卷曲
-* mbstring（强烈建议使用UTF-8）
-* 聚四氟乙烯
-* 图标
-* gmp（这是PHP 7.2+的内置扩展）
+也可以直接下载代码文件： [**`ccxt.php`**](https://raw.githubusercontent.com/ccxt/ccxt/master/php)
+
+It requires common PHP modules:
+
+依赖的 PHP 模块：
+
+* cURL
+* mbstring \(建议使用 UTF-8 编码\)
+* PCRE
+* iconv
 
 ```text
-包括“ ccxt.php” ； 的var_dump （\ ccxt \ 交易所：：$交流）; //打印所有可用交换类的列表 
+include "ccxt.php";
+var_dump (\ccxt\Exchange::$exchanges); // 输出一个list，内容为所有可用的交易所的类
 ```
 
-### 码头工人 <a id="docker"></a>
+### Proxy 代理服务器
 
-您可以将CCXT以及所有支持的语言和依赖项安装在容器中。如果您想为CCXT做出贡献，这可能会很有用（例如，运行构建脚本和测试- 有关详细信息，请参阅[贡献](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md)文档）。
+In some specific cases you may want a proxy, if you experience issues with [DDoS protection by Cloudflare](https://github.com/ccxt/ccxt/wiki/Manual#ddos-protection-by-cloudflare) or your network / country / IP is rejected by their filters.
 
-使用（在克隆的CCXT存储库中）：`docker-compose`
+在某些情况下你可能需要使用代理服务器，例如：[Cloudflare 的 DDoS 保护机制](https://github.com/ccxt/ccxt/wiki/Manual#ddos-protection-by-cloudflare) ；你所在的网络、国家或你的IP地址已被屏蔽。
 
-```text
-docker-compose运行--rm ccxt
-```
+If you need a proxy, use the `proxy` property \(a string literal\) containing base URL of http\(s\) proxy. It is for use with web browsers and from blocked locations.
 
-或者：
+如果你需要配置代理服务器，请使用 `proxy` 参数，内容为一串包含 http\(s\) 的代理地址的字符串。这个功能通常在浏览器上使用，以解决锁区的情况。
 
-```text
-码头工人建设。--tag ccxt泊坞窗运行-it ccxt
-```
+**Bear in mind that each added intermediary contributes to the overall latency and roundtrip time. Longer delays can result in price slippage.**
 
-## 代理 <a id="proxy"></a>
+**请注意，每增加一道中转网络都会导致整体延迟变高、通信周期变长，较长的延迟可能造成价格变动。**
 
-在某些特定情况下，如果您遇到[Cloudflare的DDoS保护](https://github.com/ccxt/ccxt/wiki/Manual#ddos-protection-by-cloudflare)问题，或者您的网络/国家/ IP被其过滤器拒绝，则可能需要代理。
+The absolute exchange endpoint URL is appended to `proxy` string before HTTP request is sent to exchange. The proxy setting is an empty string `''` by default. Below are examples of a non-empty proxy string \(last slash is mandatory!\):
 
-**请记住，每个添加的中介都会导致总体延迟和往返时间。较长的延迟会导致价格下滑。**
-
-### JavaScript代理 <a id="javascript-proxies"></a>
-
-为了将代理与JavaScript一起使用，需要将代理选项传递给交换类实例构造函数（或在运行时实例化之后再设置属性）：`agentexchange.agent`
-
-```text
-const ccxt = require （'ccxt' ）      ，HttpsProxyAgent = require （'https-proxy-agent' ）  ​const proxy = 进程。ENV 。http_proxy || 'http://168.63.76.32:3128'// 连接到的HTTP / HTTPS代理  const agent = new HttpsProxyAgent （proxy ）   ​crack const = new ccxt 。破解（{ agent } ）   
-```
-
-### Python代理 <a id="python-proxies"></a>
-
-该库的python版本将[python-requests](https://python-requests.org/)包用于基础HTTP，并支持包中可用的所有自定义方式，包括代理。`requests`
-
-您可以通过设置环境变量HTTP\_PROXY和HTTPS\_PROXY来配置代理。
-
-```text
-$ export HTTP_PROXY =“ http://10.10.1.10:3128”$ export HTTPS_PROXY =“ http://10.10.1.10:1080”
-```
-
-使用代理设置导出上述变量后，ccxt中的所有请求都将通过这些代理进行路由。
-
-您还可以通过编程方式设置它们：
-
-```text
-导入ccxt交换= ccxt 。poloniex （{    “代理” ：{         'http' ：'http : //10.10.1.10 : 3128' ，＃这些代理对您不起作用，例如，它们在这里           'https' ：'https : //10.10.1.10 : 1080' ，     } ，} ）
-```
-
-要么
-
-```text
-导入ccxt交换= ccxt 。poloniex （）交换。代理= {   'http' ：'http : //10.10.1.10 : 3128' ，＃这些代理对您不起作用，例如，它们在这里    'https' ：'https : //10.10.1.10 : 1080' ， }
-```
-
-#### Python 2和3同步代理 <a id="python-2-and-3-sync-proxies"></a>
-
-* [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py)
-
-```text
-＃-*-编码：utf-8-*-​导入它们导入系统导入ccxt从pprint 导入pprint​​交换= ccxt 。poloniex （{    ＃    ＃↓以下“ proxy”属性设置仅适用于CORS代理！    ＃如果您不知道CORS代理是什么，请不要使用它。    ＃https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin    ＃只有在Access-Control-Allow-Origin遇到问题时，才应使用“代理”设置    ＃在Python中，您根本不需要使用它（如果有的话）。    ＃    ＃'proxy'：'https://cors-anywhere.herokuapp.com/'，    ＃    ＃↓另一方面，“代理”设置用于HTTP（S）代理（SOCKS等）    ＃这是通过代理发送请求的标准方法    ＃这直接传递给python-requests实现    ＃您还可以使用环境变量启用它，如下所述：    ＃http://docs.python-requests.org/zh/master/user/advanced/#proxies    ＃这是您应在Python 2和3中与ccxt的同步版本一起使用的设置    ＃    “代理” ：{         'http' ：'http : //10.10.1.10 : 3128' ，         'https' ：'http : //10.10.1.10 : 1080' ，     } ，} ）​＃您的代码在这里...​pprint （交换。fetch_ticker （'ETH / BTC' ））
-```
-
-#### Python 3.5+ asyncio / aiohttp代理 <a id="python-3-5-asyncio-aiohttp-proxy"></a>
-
-* [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py)
-
-```text
-＃-*-编码：utf-8-*-​导入异步导入它们导入系统导入ccxt 。async_support 作为ccxt从pprint 导入pprint​​异步def test_gdax （）：  ​    交换= ccxt 。poloniex （{        ＃        ＃↓以下“ proxy”属性设置仅适用于CORS代理！        ＃如果您不知道CORS代理是什么，请不要使用它。        ＃https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin        ＃只有在Access-Control-Allow-Origin遇到问题时，才应使用“代理”设置        ＃在Python中，您根本不需要使用它（如果有的话）。        ＃        ＃'proxy'：'https://cors-anywhere.herokuapp.com/'，        ＃        ＃↓“ aiohttp_proxy”设置用于HTTP（S）代理（SOCKS等）。        ＃这是通过代理发送请求的标准方法        ＃这直接传递给`asyncio`和`aiohttp`实现        ＃您可以使用此处记录的此设置：        ＃https://docs.aiohttp.org/en/stable/client_advanced.html#proxy-support        ＃这是您应该在Python 3.5+中使用ccxt异步版本的设置        ＃        'aiohttp_proxy' ：'http : //proxy.com ' ，         ＃'aiohttp_proxy'：'http：// user：pass@some.proxy.com'，        ＃'aiohttp_proxy'：'http://10.10.1.10:3128'，    } ）​    ＃您的代码在这里...​    股票报价= 等待交易。fetch_ticker （'ETH / BTC' ） ​    ＃当您不再需要使用的资源时，请不要忘记释放它们    等待交流。关闭（）​    返回行情​如果__name__ == ' __main__ ' ：     pprint （ASYNCIO 。get_event_loop （）。run_until_complete （test_gdax （）））
-```
-
-可以在以下位置找到有关将代理与ccxt库的python同步版本一起使用的更详细的文档：
-
-* [代理](http://docs.python-requests.org/en/master/user/advanced/#proxies)
-* [SOCKS](http://docs.python-requests.org/en/master/user/advanced/#socks)
-
-#### Python aiohttp SOCKS代理 <a id="python-aiohttp-socks-proxy"></a>
-
-```text
-点安装aiohttp_socks
-```
-
-```text
-导入ccxt 。async_support 作为ccxt导入aiohttp导入aiohttp_socks​异步def 测试（）：  ​    连接器= aiohttp_socks 。ProxyConnector 。from_url （'socks5：// user：password@127.0.0.1：1080' ）    会话= aiohttp 。ClientSession （连接器= 连接器）​    交换= ccxt 。搜索（{        'session' ：会话，        'enableRateLimit' ：真，         ＃...    } ）​    ＃...​    等待会议。close （）＃不要忘记关闭会话  ​    ＃...
-```
-
-## CORS（访问控制允许来源） <a id="cors-access-control-allow-origin"></a>
-
-如果需要CORS代理，请使用包含http（s）代理的基本URL 的属性（字符串文字）。它可与Web浏览器一起使用，也可在受阻止的位置使用。`proxy`
-
-CORS是[跨域资源共享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。使用ccxt库从浏览器访问交换的HTTP REST API时，您可能会收到警告或异常消息，说。这意味着交易所管理员尚未启用从任意Web浏览器页面访问其API的权限。`No 'Access-Control-Allow-Origin' header is present on the requested resource`
-
-您仍然可以通过CORS代理从浏览器中使用ccxt库，该库很容易设置或安装。互联网上也有公共CORS代理。
-
-在将HTTP请求发送到交换之前，将绝对交换端点URL附加到字符串。默认情况下，该设置为空字符串。以下是非空字符串的示例（必须使用最后一个斜杠！）：`proxyproxy''proxy`
+配置了代理服务器后，每个访问某交易所的 HTTP 请求都会先经过代理服务器，然后再被转发至目的地址。参数代理服务器的默认值为 `''` 。 代理服务器的配置方法如下（目的URL必须以斜杠‘/’结尾）:
 
 * `kraken.proxy = 'https://crossorigin.me/'`
 * `gdax.proxy = 'https://cors-anywhere.herokuapp.com/'`
 
-要在本地运行自己的CORS代理，您可以设置一个现有的CORS代理，也可以制作自己的快速脚本，如下所示。
+#### Python 代理服务器
 
-### Node.js CORS代理 <a id="node-js-cors-proxy"></a>
+The python version of the library uses the [python-requests](https://github.com/bilibilihuangyifan/ccxtcn/blob/CN-TRANSLATION/wiki/python-requests.org) package for underlying HTTP and supports all means of customization available in the `requests` package, including proxies.
+
+Python 版本的 ccxt 库使用 [python-requests](https://github.com/bilibilihuangyifan/ccxtcn/blob/CN-TRANSLATION/wiki/python-requests.org) 包处理底层 HTTP 通信，并且兼容 `requests` 包中所有的自定义方法，包括代理服务器的相关功能。
+
+You can configure proxies by setting the environment variables HTTP\_PROXY and HTTPS\_PROXY.
+
+你可以通过修改环境变量 HTTP\_PROXY 和 HTTPS\_PROXY 的值来设置代理服务器。
 
 ```text
-// JavaScript CORS代理//将其保存在cors.js之类的文件中，并通过`node cors [port]`运行//默认情况下，它将在您通过命令行传递的端口或端口8080上侦听您的请求让端口= （处理。ARGV 。长度> 2 ）？parseInt函数（过程。的argv [ 2 ] ）：8080 ; //默认        require （'cors-anywhere' ）。createServer （）。侦听（port ，'localhost' ）    
+$ export HTTP_PROXY="http://10.10.1.10:3128"
+$ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
 
-### Python CORS代理 <a id="python-cors-proxy"></a>
+After exporting the above variables with your proxy settings, all reqeusts from within ccxt will be routed through those proxies.
+
+设置完代理服务器后，所有从 ccxt 发出的请求都会被指向代理服务器。
+
+You can also set them programmatically:
+
+当然也可以在代码中动态设置代理服务器：
 
 ```text
-＃！/ usr / bin / env python＃Python CORS代理＃将其保存在cors.py之类的文件中，并以`python cors.py [port]`或`cors [port]`运行尝试：    ＃Python 3    来自http 。服务器导入HTTPServer ，SimpleHTTPRequestHandler ，测试为test_orig    导入系统    def 测试（* args ）：          test_orig （* ARGS ，端口= INT （SYS 。的argv [ 1 ] ）如果len个（SYS 。的argv ）> 1 别的8080 ）         除了ImportError ：＃Python 2     从BaseHTTPServer 导入HTTPServer ，进行测试    从SimpleHTTPServer 导入SimpleHTTPRequestHandler​类CORSRequestHandler （SimpleHTTPRequestHandler ）：      def end_headers （self ）：          自我。send_header （'Access-Control-Allow-Origin' ，'*' ）         SimpleHTTPRequestHandler 。end_headers （self ）​如果__name__ == ' __main__ ' ：     测试（CORSRequestHandler ，HTTPServer ）
+import ccxt
+exchange = ccxt.poloniex({
+    'proxies': {
+        'http': 'http://10.10.1.10:3128',
+        'https': 'http://10.10.1.10:1080',
+    },
+})
 ```
 
-### 测试CORS <a id="testing-cors"></a>
+或：
 
-设置并运行它之后，可以通过代理查询交换端点的目标URL来对其进行测试（例如[https：// localhost：8080 / https：//exchange.com/path/to/endpoint](https://localhost:8080/https://exchange.com/path/to/endpoint)）。
+```text
+import ccxt
+exchange = ccxt.poloniex()
+exchange.proxies = {
+  'http': 'http://10.10.1.10:3128',
+  'https': 'http://10.10.1.10:1080',
+}
+```
 
-要测试CORS，您可以执行以下任一操作：
+**Python 2 和 3 同步代理**
 
-* 在浏览器设置中的某处设置代理，然后转到端点URL `https://exchange.com/path/to/endpoint`
-* 直接在地址栏中输入该URL为 `https://localhost:8080/https://exchange.com/path/to/endpoint`
-* 从命令像cURL `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
+* [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py)
 
-为了让ccxt知道代理，可以在交换实例上设置属性。`proxy`
+```text
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import ccxt
+from pprint import pprint
+
+
+exchange = ccxt.poloniex({
+    #
+    # ↓ The "proxy" property setting below is for CORS-proxying only!
+    # Do not use it if you don't know what a CORS proxy is.
+    # https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin
+    # You should only use the "proxy" setting if you're having a problem with Access-Control-Allow-Origin
+    # In Python you rarely need to use it, if ever at all.
+    #
+    # 'proxy': 'https://cors-anywhere.herokuapp.com/',
+    #
+    # ↓ On the other hand, the "proxies" setting is for HTTP(S)-proxying (SOCKS, etc...)
+    # It is a standard method of sending your requests through your proxies
+    # This gets passed to the `python-requests` implementation directly
+    # You can also enable this with environment variables, as described here:
+    # http://docs.python-requests.org/en/master/user/advanced/#proxies
+    # This is the setting you should be using with synchronous version of ccxt in Python 2 and 3
+    #
+    # ↓ 以下参数设置方法仅适用于 CORS-proxying 代理服务器！
+    # 如果你不清楚什么是 CORS 代理服务器，请不要使用这种方法去设置。
+    # https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin
+    # 建议仅当在你配置 Access-Control-Allow-Origin 后都无法实现跨域访问的情况下再使用本功能。
+    # 在 Python 中你只有在极少数情况下才会需要这个功能，甚至可能完全用不着。
+    #
+    # 'proxy': 'https://cors-anywhere.herokuapp.com/',
+    #
+    # ↓ 另外，配置 "proxies" 是为了使 HTTP(S)、SOCKS 等数据协议能够正常通信。
+    # 这是通过代理服务器发送网络请求的标准做法
+    # 你可以通过使用 `requests` 包快捷方便地实现该需求
+    # 你也可以通过设置环境变量来启用代理功能，使用方法如下：
+    # http://docs.python-requests.org/en/master/user/advanced/#proxies
+    # 在 ccxt 同步版本中方可使用本方法配置代理服务器， 环境为 Python 2 或 3
+    #
+    'proxies': {
+        'http': 'http://10.10.1.10:3128',
+        'https': 'http://10.10.1.10:1080',
+    },
+})
+
+# 在这里编写你的代码
+
+pprint(exchange.fetch_ticker('ETH/BTC'))
+```
+
+**Python 3.5+ asyncio/aiohttp proxy**
+
+* [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py)
+
+```text
+# -*- coding: utf-8 -*-
+
+import asyncio
+import os
+import sys
+import ccxt.async as ccxt
+from pprint import pprint
+
+
+async def test_gdax():
+
+    exchange = ccxt.poloniex({
+        #
+        # ↓ The "proxy" property setting below is for CORS-proxying only!
+        # Do not use it if you don't know what a CORS proxy is.
+        # https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin
+        # You should only use the "proxy" setting if you're having a problem with Access-Control-Allow-Origin
+        # In Python you rarely need to use it, if ever at all.
+        #
+        # 'proxy': 'https://cors-anywhere.herokuapp.com/',
+        #
+        # ↓ The "aiohttp_proxy" setting is for HTTP(S)-proxying (SOCKS, etc...)
+        # It is a standard method of sending your requests through your proxies
+        # This gets passed to the `asyncio` and `aiohttp` implementation directly
+        # You can use this setting as documented here:
+        # https://docs.aiohttp.org/en/stable/client_advanced.html#proxy-support
+        # This is the setting you should be using with async version of ccxt in Python 3.5+
+        #
+        #
+        # ↓ 以下参数设置方法仅适用于 CORS-proxying 代理服务器！
+        # 如果你不清楚什么是 CORS 代理服务器，请不要使用这种方法去设置。
+        # https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin
+        # 建议仅当在你配置 Access-Control-Allow-Origin 后都无法实现跨域访问的情况下再使用本功能。
+        # 在 Python 中你只有在极少数情况下才会需要这个功能，甚至可能完全用不着。
+        #
+        # 'proxy': 'https://cors-anywhere.herokuapp.com/',
+        #
+        #
+        # ↓ 配置 "aiohttp_proxy" 是为了使 HTTP(S)、SOCKS 等数据协议能够正常通信。
+        # 这是通过代理服务器发送网络请求的标准做法
+        # 你可以通过使用 `asyncio` 和 `aiohttp` 包快捷方便地实现该需求
+        # 你也可以通过设置环境变量来启用代理功能，使用方法如下：
+        # https://docs.aiohttp.org/en/stable/client_advanced.html#proxy-support
+        # 在 ccxt 异步版本中方可使用本方法配置代理服务器， 环境为 Python 3.5+
+        #
+        'aiohttp_proxy': 'http://proxy.com',
+        # 'aiohttp_proxy': 'http://user:pass@some.proxy.com',
+        # 'aiohttp_proxy': 'http://10.10.1.10:3128',
+    })
+
+    # 在这里编写你的代码
+
+    ticker = await exchange.fetch_ticker('ETH/BTC')
+
+    # 不要忘了在使用完成后释放该资源
+    await exchange.close()
+
+    return ticker
+
+if __name__ == '__main__':
+    pprint(asyncio.get_event_loop().run_until_complete(test_gdax()))
+```
+
+A more detailed documentation on using proxies with the sync python version of the ccxt library can be found here:
+
+如果希望进一步了解如何在 ccxt 库 Python 同步版本中使用 proxies 可以访问以下地址查看更多说明文档：
+
+* [Proxies](http://docs.python-requests.org/en/master/user/advanced/#proxies)
+* [SOCKS](http://docs.python-requests.org/en/master/user/advanced/#socks)
+
+### CORS 跨域资源共享 \(Access-Control-Allow-Origin\)
+
+CORS is [Cross-Origin Resource Sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). When accessing the HTTP REST API of an exchange from browser with ccxt library you may get a warning or an exception, saying `No 'Access-Control-Allow-Origin' header is present on the requested resource`. That means that the exchange admins haven't enabled access to their API from arbitrary web browser pages.
+
+CORS 的全称是 [跨域资源共享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). 当你使用 ccxt 库通过浏览器访问某交易所的 HTTP REST API 时，你可能会收到一个报警甚至报错信息， 提示 `该请求没有包含 'Access-Control-Allow-Origin' 头部信息`。 这说明该交易所服务器不允许通过网页浏览器访问他们的 API 接口。
+
+You can still use the ccxt library from your browser via a CORS-proxy, which is very easy to set up or install. There are also public CORS proxies on the internet, like [https://crossorigin.me](https://crossorigin.me/).
+
+你可以通过配置 CORS-proxy 代理服务器，继续在浏览器上使用 ccxt 库，CORS-proxy 代理服务器的安装和配置方法非常简单。公网上也有公共的 CORS 代理服务器可以使用，详见： [https://crossorigin.me](https://crossorigin.me/)。
+
+To run your own CORS proxy locally you can either set up one of the existing ones or make a quick script of your own, like shown below.
+
+若你想在本地搭建 CORS 代理服务器，你可以使用现成的工具，也可以简单编辑一个脚本，脚本代码如下：
+
+#### Node.js 版本的 CORS 代理服务器
+
+```text
+// JavaScript CORS Proxy
+// Save this in a file like cors.js and run with `node cors [port]`
+// It will listen for your requests on the port you pass in command line or port 8080 by default
+// JavaScript CORS Proxy
+// 将代码保存到 cors.js 文件，并通过命令 `node cors [port]` 执行
+// 该脚本将会监听你的网络请求，监听端口可以在命令行运行脚本时配置，默认端口为8080
+let port = (process.argv.length > 2) ? parseInt (process.argv[2]) : 8080; // default
+require ('cors-anywhere').createServer ().listen (port, 'localhost')
+```
+
+#### Python 版本的 CORS 代理服务器
+
+```text
+#!/usr/bin/env python
+# Python CORS Proxy
+# Save this in a file like cors.py and run with `python cors.py [port]` or `cors [port]`
+# Python CORS Proxy
+# 将代码保存到 cors.py 文件，通过命令 `python cors.py [port]` 或 `cors [port]` 执行脚本
+try:
+    # Python 3
+    from http.server import HTTPServer, SimpleHTTPRequestHandler, test as test_orig
+    import sys
+    def test (*args):
+        test_orig (*args, port = int (sys.argv[1]) if len (sys.argv) > 1 else 8080)
+except ImportError: # Python 2
+    from BaseHTTPServer import HTTPServer, test
+    from SimpleHTTPServer import SimpleHTTPRequestHandler
+
+class CORSRequestHandler (SimpleHTTPRequestHandler):
+    def end_headers (self):
+        self.send_header ('Access-Control-Allow-Origin', '*')
+        SimpleHTTPRequestHandler.end_headers (self)
+
+if __name__ == '__main__':
+    test (CORSRequestHandler, HTTPServer)
+```
+
+#### 测试 CORS 功能
+
+After you set it up and run it, you can test it by querying the target URL of exchange endpoint through the proxy \(like [https://localhost:8080/https://exchange.com/path/to/endpoint](https://localhost:8080/https://exchange.com/path/to/endpoint)\).
+
+代理服务器安装配置完毕后，你可以通过输入 URL 测试能否正常访问目标交易所，URL 的组成包含代理服务器地址和目标交易所地址\(例如： [https://localhost:8080/https://exchange.com/path/to/endpoint\)。](https://localhost:8080/https://exchange.com/path/to/endpoint%29%E3%80%82)
+
+To test the CORS you can do either of the following:
+
+或者通过以下任意一种方法测试：
+
+* set up proxy somewhere in your browser settings, then go to endpoint URL `https://exchange.com/path/to/endpoint`
+* 在浏览器中配置代理服务器， 然后直接访问目的 URL `https://exchange.com/path/to/endpoint`
+* type that URL directly in the address bar as `https://localhost:8080/https://exchange.com/path/to/endpoint`
+* 在地址栏中直接输入以下地址 `https://localhost:8080/https://exchange.com/path/to/endpoint`
+* cURL it from command like `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
+* 使用 cURL 命令测试 `curl https://localhost:8080/https://exchange.com/path/to/endpoint`
+
+To let ccxt know of the proxy, you can set the `proxy` property on your exchange instance.
+
+你可以在具体的交易所实例中设置 `proxy` 参数，让 ccxt 库能够正常使用代理服务器。
 
