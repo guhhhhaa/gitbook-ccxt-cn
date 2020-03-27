@@ -1,10 +1,33 @@
 # README
 
- 自述文件
+## 如何使用
+
+* [安装](https://github.com/ccxt/ccxt/wiki/Install)
+  * [Node.js](https://github.com/ccxt/ccxt/wiki/Install#nodejs)
+  * [Python](https://github.com/ccxt/ccxt/wiki/Install#python)
+  * [PHP](https://github.com/ccxt/ccxt/wiki/Install#php)
+  * [网页浏览器](https://github.com/ccxt/ccxt/wiki/Install#web-browsers)
+  * [代理](https://github.com/ccxt/ccxt/wiki/Install#proxy)
+  * [跨域访问 / CORS \(Access-Control-Allow-Origin\)](https://github.com/ccxt/ccxt/wiki/Install#cors-access-control-allow-origin)
+
+### 如何安装
+
+* [支持的交易所](https://github.com/ccxt/ccxt/wiki/Exchange-Markets)
+* [交易所\(按国家分类\)](https://github.com/ccxt/ccxt/wiki/Exchange-Markets-By-Country)
+
+### 概要信息
+
+> 注意：以下链接应当在该部分文档完成后修改链接到中文版
+
+Welcome to the ccxt wiki! 欢迎来到 CCXT 百科！
+
+  
+   
+自述文件
 
 ​[​![&#x5EFA;&#x7ACB;&#x72B6;&#x6001;](https://travis-ci.org/ccxt/ccxt.svg?branch=master)​](https://travis-ci.org/ccxt/ccxt) [​![ASL](https://img.shields.io/npm/v/ccxt.svg)​](https://npmjs.com/package/ccxt) [​![&#x805A;&#x9170;&#x4E9A;&#x80FA;](https://img.shields.io/pypi/v/ccxt.svg)​](https://pypi.python.org/pypi/ccxt) [​![NPM&#x4E0B;&#x8F7D;](https://img.shields.io/npm/dm/ccxt.svg)​](https://www.npmjs.com/package/ccxt) [​![&#x4E0D;&#x548C;&#x8C10;](https://img.shields.io/discord/690203284119617602?logo=discord&logoColor=white)​](https://discord.gg/dhzSKYU) [​![&#x652F;&#x6301;&#x7684;&#x4EA4;&#x6613;&#x6240;](https://img.shields.io/badge/exchanges-123-blue.svg)​](https://github.com/ccxt/ccxt/wiki/Exchange-Markets) [​![&#x5F00;&#x653E;&#x96C6;&#x4F53;](https://opencollective.com/ccxt/backers/badge.svg)​](https://opencollective.com/ccxt) [​![Twitter&#x5173;&#x6CE8;](https://img.shields.io/twitter/follow/ccxt_official.svg?style=social&label=CCXT)​](https://twitter.com/ccxt_official)​
 
-一个JavaScript / Python / PHP库，用于加密货币交易和电子商务，并支持许多比特币/以太币/山寨币交易市场和商人API。
+一个用于加密货币电子化交易的 JavaScript / Python / PHP 库，支持诸多比特币/以太币/山寨币交易市场的交易 API 。
 
 ### 安装 · 用法 · [手册](https://github.com/ccxt/ccxt/wiki) · [FAQ](https://github.com/ccxt/ccxt/wiki/FAQ) · [实例](https://github.com/ccxt/ccxt/tree/master/examples) · [奉献](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md) · 社会 <a id="install-usage-manual-faq-examples-contributing-social"></a>
 
