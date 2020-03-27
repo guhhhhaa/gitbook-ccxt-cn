@@ -18,4 +18,5 @@
 * [ccxt-pro-install](ccxt-pro-install.md)
 * [ccxt-pro-manual](ccxt-pro-manual.md)
 * [Examples](examples.md)
+* [README2](readme2.md)
 
