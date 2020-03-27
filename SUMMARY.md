@@ -1,6 +1,7 @@
 # Table of contents
 
 * [README](README.md)
+* [README2](readme2.md)
 * [readme-wiki](readme-wiki.md)
 * [certification](certification.md)
 * [contributing](contributing.md)
@@ -18,5 +19,4 @@
 * [ccxt-pro-install](ccxt-pro-install.md)
 * [ccxt-pro-manual](ccxt-pro-manual.md)
 * [Examples](examples.md)
-* [README2](readme2.md)
 
