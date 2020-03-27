@@ -1,4 +1,4 @@
-# 贡献
+# contributing
 
 ## 贡献
 

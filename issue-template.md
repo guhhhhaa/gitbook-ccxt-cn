@@ -1,8 +1,4 @@
----
-description: issue-template
----
-
-# 问题模板
+# issue-template
 
 ## ISSUE\_TEMPLATE
 
