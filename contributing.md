@@ -93,28 +93,28 @@ description: contributing
 最简单的方法是使用Docker在安装了所有依赖项的情况下运行隔离的构建和测试环境：
 
 ```text
-docker-compose运行--rm ccxt
+docker-compose run --rm ccxt
 ```
 
-这将建立一个容器并打开一个外壳，在该外壳中，and 命令应直接使用即可。`npm run buildnode run-tests`
+这将建立一个容器并打开一个 shell ，在该 shell 中，`npm run build`和`node run-tests`命令应直接使用即可。
 
-CCXT文件夹已映射到容器内部，但该文件夹除外-容器将具有自己的临时副本-这样就不会弄乱本地安装的模块。这意味着您可以使用自己喜欢的编辑器在主机上编辑源，并在运行的容器中构建/测试它们。`node_modules`
+CCXT 文件夹已映射到容器内部，但`node_modules`文件夹除外-容器将具有自己的临时副本-这样就不会弄乱本地安装的模块。这意味着您可以使用自己喜欢的编辑器在主机上编辑源，并在运行的容器中构建/测试它们。
 
 这样，您可以使构建工具和过程保持隔离状态，而不必经历将所有这些依赖项手动安装到主机的痛苦过程。
 
-如果您选择困难的方式，那么这里是您将需要的依赖项列表。它可能不完整且过时，因此您可能需要查看和脚本，以获取我们用于安装构建和测试CCXT所需的最新依赖关系的命令列表。[`Dockerfile`](https://github.com/ccxt/ccxt/blob/master/Dockerfile)[`.travis.yml`](https://github.com/ccxt/ccxt/blob/master/.travis.yml)
+如果您选择困难的方式，那么这里是您将需要的依赖项列表。它可能不完整且过时，因此您可能需要查看[`Dockerfile`](https://github.com/ccxt/ccxt/blob/master/Dockerfile)和[`.travis.yml`](https://github.com/ccxt/ccxt/blob/master/.travis.yml)脚本，以获取我们用于安装构建和测试CCXT所需的最新依赖关系的命令列表。
 
-* [Node.js的](https://nodejs.org/en/download/) 8+
-* [Python的](https://www.python.org/downloads/) 3.5.3+和Python 2.7+
-  * 毒物（或）`brew install toxpip install tox`
-  * 要求（）`pip install requests`
-  * aiohttp（）`pip install aiohttp`
-* [PHP](https://secure.php.net/downloads.php) 5.3+具有以下扩展名安装并启用：
-  * 卷曲
-  * 图标
+* [Node.js](https://nodejs.org/en/download/) 8+
+* [Python](https://www.python.org/downloads/) 3.5.3+ and Python 2.7+
+  * tox \(`brew install tox` or `pip install tox`\)
+  * requests \(`pip install requests`\)
+  * aiohttp \(`pip install aiohttp`\)
+* [PHP](https://secure.php.net/downloads.php) 5.3+ with the following extensions installed and enabled:
+  * cURL
+  * iconv
   * mbstring
-  * 聚四氟乙烯
-  * bcmath（php &lt;7.1）
+  * PCRE
+  * bcmath \(php&lt;7.1\)
 * [Pandoc](https://pandoc.org/installing.html) 1.19+
 
 ## 你需要知道什么 <a id="what-you-need-to-know"></a>
@@ -124,7 +124,40 @@ CCXT文件夹已映射到容器内部，但该文件夹除外-容器将具有自
 存储库的内容结构如下：
 
 ```text
-/＃根目录，也就是Node.js的npm module / package文件夹/.babelrc＃用于创建库的ES5版本的babel配置/.eslintrc＃林特/.gitattributes＃包含用于回购中语言检测的语言学家设置/.gitignore＃忽略它/.npmignore＃从NPM软件包中排除的文件/.travis.yml＃travis-ci的YAML配置（连续集成）/CONTRIBUTING.md＃此文件/LICENSE.txt＃MIT/README.md＃适用于GitHub，npmjs.com，npms.io，yarn等的master markdown/ build /＃构建脚本/build/export-exchanges.js＃用于在构建过程中在文档中创建交换表/build/transpile.js＃编译脚本/build/update-badges.js＃一个JS脚本来更新自述文件和文档中的徽章/build/vss.js＃从package.json读取单源版本并将其写入到各处/ dist /＃生成的CCXT浏览器捆绑包的文件夹/ccxt.js＃ccxt库的主JS版本的入口点/ccxt.php＃ccxt库的PHP版本的入口点/ doc /＃Sphinx为http://ccxt.readthedocs.io/生成的rst-docs/ js /＃库的JS版本/ php /＃PHP ccxt模块/软件包文件夹/ python /＃PyPI的Python ccxt module / package文件夹/python/__init__.py＃ccxt.library的Python版本的入口点/python/async/__init__.py＃ccxt.library的异步版本（适用于Python 3.5.3+ asyncio）/ python / base /＃ccxt库的Python版本的基本代码/python/MANIFEST.in＃一个PyPI软件包文件，列出了额外的软件包文件（许可证，配置等...）/python/README.rst＃为PyPI生成了reStructuredText/python/setup.cfg＃Python软件包的wheel配置文件/python/setup.py＃Python中ccxt的pip / setuptools脚本（构建/安装）/python/tox.ini＃Python的tox配置/ examples /＃不言自明/ examples / js＃.../ examples / php＃.../ examples / py＃.../exchanges.cfg＃自定义捆绑包配置，仅包括您需要的交换/package.json＃npm软件包文件，也用于setup.py中，用于版本单源/run-tests.js＃前端，用于以所有语言（JS / PHP / Python）运行所有交换的独立测试/ wiki /＃所有文档的来源（编辑在此处）
+/ # 根目录，也就是Node.js的npm module/package文件夹
+/.babelrc # 用于创建库的ES5版本的babel配置
+/.eslintrc # linter
+/.gitattributes # 包含用于回购中语言检测的语言学家设置
+/.gitignore # 忽略它
+/.npmignore # 从NPM软件包中排除的文件
+/.travis.yml # travis-ci的YAML配置（连续集成）
+/CONTRIBUTING.md # 此文件
+/LICENSE.txt # MIT
+/README.md # 适用于GitHub，npmjs.com，npms.io，yarn等的master markdown
+/build/ # 构建脚本/build/export-exchanges.js # 用于在构建过程中在文档中创建交换表
+/build/transpile.js # 编译脚本/build/update-badges.js # 一个JS脚本来更新自述文件和文档中的徽章
+/build/vss.js # 从package.json读取单源版本并将其写入到各处
+/dist/ # 生成的CCXT浏览器捆绑包的文件夹/ccxt.js # ccxt库的主JS版本的入口点
+/ccxt.php # ccxt库的PHP版本的入口点
+/doc/ # Sphinx为http://ccxt.readthedocs.io/生成的rst-docs
+/js/ # 库的JS版本
+/php/ # PHP ccxt模块/软件包文件夹
+/python/ # PyPI的Python ccxt module/package文件夹
+/python/__init__.py # ccxt.library的Python版本的入口点
+/python/async/__init__.py # ccxt.library的异步版本（适用于Python 3.5.3+ asyncio）
+/python/base/ # ccxt库的Python版本的基本代码/python/MANIFEST.in # 一个PyPI软件包文件，列出了额外的软件包文件（许可证，配置等...）
+/python/README.rst # 为PyPI生成了reStructuredText
+/python/setup.cfg # Python软件包的wheel配置文件
+/python/setup.py # Python中ccxt的pip/setuptools脚本（构建/安装）
+/python/tox.ini # Python的tox配置
+/examples/ # 不言自明
+/examples/js # ...
+/examples/php # ...
+/examples/py # ...
+/exchanges.cfg # 自定义捆绑包配置，仅包括您需要的交换
+/package.json # npm软件包文件，也用于setup.py中，用于版本单源
+/run-tests.js # 前端，用于以所有语言（JS/PHP/Python）运行所有交换的独立测试
+/wiki/ # 所有文档的来源（编辑在此处）
 ```
 
 ### 多语言支持 <a id="multilanguage-support"></a>
@@ -135,30 +168,31 @@ ccxt库提供三种不同的语言（以后还会提供）。我们鼓励开发�
 
 模块入口点是：
 
-* `./python/__init__.py` 用于Python pip包
-* `./python/async/__init__.py` 适用于Python 3.5.3+ ccxt.async\_support子软件包
-* `./ccxt.js` 用于Node.js npm包
-* `./dist/ccxt.browser.js` 用于浏览器捆绑
-* `./ccxt.php` 对于PHP
+* `./python/__init__.py` for the Python pip package
+* `./python/async/__init__.py` for the Python 3.5.3+ ccxt.async\_support subpackage
+* `./ccxt.js` for the Node.js npm package
+* `./dist/ccxt.browser.js` for the browser bundle
+* `./ccxt.php` for PHP
 
-通过命令从源文件和文件中编译生成的版本和文档。`ccxt.js./js/npm run build`
+生成的版本和文档从源代码中转译  
+`ccxt.js` file and files in `./js/` by the `npm run build` command.
 
 ### 转译（生成的）文件 <a id="transpiled-generated-files"></a>
 
 * 所有派生的交换类都是从源JS文件自动转译的。源文件与语言无关，可以轻松地线对线映射到任何其他语言，并以跨语言兼容的方式编写。任何编码器都​​可以读取（通过设计）。
 * **不是**编译所有基类，**而是**针对特定语言。
 
-#### 的JavaScript <a id="javascript"></a>
+#### JavaScript
 
-所述与从巴别源产生。`ccxt.browser.js`
+The `ccxt.browser.js` 由Babel从源代码生成。
 
-#### 蟒蛇 <a id="python"></a>
+#### python
 
-这些包含派生交换类的文件从JS转换为Python：
+ 这些包含派生交换类的文件从JS转换为Python：
 
 * `js/[_a-z].js` → `python/ccxt/async/[_a-z].py`
-* `python/ccxt/async[_a-z].py`→ （Python 3异步→Python 2同步转换阶段）`python/ccxt/[_a-z].py`
-* `python/test/test_async.py`→ （同步测试是通过异步测试生成的）`python/test/test.py`
+* `python/ccxt/async[_a-z].py`→`python/ccxt/[_a-z].py`（Python 3异步→Python 2同步转换阶段）
+* `python/test/test_async.py`→ `python/test/test.py`（同步测试是通过异步测试生成的）
 
 这些Python基类和文件不会被转译：
 
@@ -191,7 +225,7 @@ Transpiler基于正则表达式，在很大程度上依赖于特定的格式设�
 
 在建造之前，请使用棉绒。它将涵盖许多（但不是全部）问题，因此如果移植失败，仍然需要手动检查。`npm run lint js/your-exchange-implementation.js`
 
-如果您在运行时看到异常或任何其他翻译错误，请检查您的代码是否满足以下规则：`[TypeError] Cannot read property '1' of nullnpm run build`
+如果您在运行`npm run build`时看到`[TypeError] Cannot read property '1' of null`异常或任何其他翻译错误，请检查您的代码是否满足以下规则：
 
 * 不要在您的方法中放入空行
 * 始终使用Python样式的缩进，所有语言都保留原样
@@ -202,14 +236,16 @@ Transpiler基于正则表达式，在很大程度上依赖于特定的格式设�
 
 如果转译过程成功完成，但是生成了错误的Python / PHP语法，请检查以下内容：
 
-* 每个开口支架都喜欢或应该在其前面有一个空格！`({`
+
+
+* 每个`(`或`{`开头的括号都应在其前面加一个空格！
 * 即使您确实想使用特定语言的代码语法糖
 * 将所有映射和理解展开为基本的for循环
 * 不要更改被重写的继承方法的参数，在所有交换中保持一致
-* 仅使用基类方法执行所有操作（例如，用于将对象转换为json）。`this.json ()`
-* 总是在每个语句的末尾加上分号，如PHP / C风格`;`
-* 所有相关键在任何地方都必须是单引号字符串， `array['good'], array.bad`
-* 变量应在语义上用或关键字声明（否！），在任何地方都应首选`constletvarconst`
+* 仅使用基类方法执行所有操作（例如，`this.json ()`用于将对象转换为json）。
+* 总是在每个语句的末尾加上分号`;`，就像PHP / C的风格那样
+* 所有相关keys在任何地方都必须是单引号strings， `array['good'], array.bad`
+* 变量应在语义上用`const`或`let`关键字声明（不用`var`！），在任何地方都应首选`const`
 
 并且在结构上：
 
@@ -221,12 +257,12 @@ Transpiler基于正则表达式，在很大程度上依赖于特定的格式设�
 * 不要使用过于复杂的条件语句（如果用括号括起来的话）
 * 不要使用繁重的三元条件
 * 避免操作混乱（**不这样做**：）`a && b || c ? d + 80 : e ** f`
-* 不要使用，而是使用！`.includes().indexOf()`
-* 永远不要在浮点数上使用：`.toString()Number (0.00000001).toString () === '1e-8'`
-* 不要使用闭包，或者在派生类中不可接受`a.mapa.filter (x => (x === 'foobar'))`
-* 不要使用运算符检查值是否在非关联数组（列表）中`in`
+* 不要使用 `.includes()`，而是使用`.indexOf()` !
+* 永远不要在浮点数上使用 `.toString()` `.toString()Number (0.00000001)=== '1e-8'`
+* 不要使用闭包，`a.map`或者 `a.filter (x => (x === 'foobar'))`在派生类中不可接受
+* 不要使用`in`运算符检查值是否在非关联数组（列表）中
 * 不添加自定义货币或符号/货币对转换和格式，而是从现有代码中复制
-* **不要访问不存在的密钥，将无法使用其他语言！`array['key'] || {}`**
+* **不要访问不存在的密钥，`array['key'] || {}`将无法使用其他语言！**
 * 保持简单，一行不要多于一条语句
 
 #### 发送市场编号 <a id="sending-market-ids"></a>
@@ -241,21 +277,32 @@ Transpiler基于正则表达式，在很大程度上依赖于特定的格式设�
 **永远不要这样做：**
 
 ```text
-异步fetchTicker （symbol ，params = { } ）{       const request = {       'pair' ：symbol ，//非常糟糕，直接向交易所发送统一的符号    } ;   const response = 等待此。publicGetEndpoint （请求）;      //以统一的方式解析...}
+async fetchTicker (symbol, params = {}) {
+   const request = {
+      'pair': symbol, // 非常糟糕，直接向交易所发送统一的符号
+   };
+   const response = await this.publicGetEndpoint (request);
+   // 以统一的方式解析...
+}
 ```
 
 **不要这样做：**
 
 ```text
-异步fetchTicker （symbol ，params = { } ）{       const request = {       'symbol' ：symbol ，//非常糟糕，直接向交易所发送统一的符号    } ;   const response = 等待此。publicGetEndpoint （请求）;      //以统一的方式解析...}
+async fetchTicker (symbol, params = {}) {
+   const request = {
+      'symbol': symbol, // 非常糟糕，直接向交易所发送统一的符号
+   const response = await this.publicGetEndpoint (request);
+   // 以统一的方式解析...
+}
 ```
 
 我们**始终没有**将统一的CCXT符号发送给交易所，而是**始终**采用与该符号对应的特定于交易所的市场。如果发生这种情况，则特定于交易所的市场ID与CCXT统一符号完全相同–这是一个巧合，但是我们从不依赖于统一CCXT API。`id`
 
 要通过统一的CCXT符号获取特定于交易所的市场ID，请使用以下方法：
 
-* `this.market (symbol)`-返回整个统一市场结构，包含，，，和许多其他有趣的事情`idbaseIdquoteId`
-* `this.marketId (symbol)`– 通过统一的符号仅返回特定于市场的交易（如果您不需要其他任何内容）`id`
+* `this.market (symbol)`-返回整个统一市场结构，包含 `id`, `baseId`, `quoteId`,和许多其他有趣的事情
+* `this.marketId (symbol)`– 通过统一的符号`id`仅返回特定于市场的交易（如果您不需要其他任何内容）
 
 **好的例子：**
 

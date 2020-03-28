@@ -1,7 +1,3 @@
----
-description: integration-faq
----
-
 # 整合常见问题
 
 ## 整合常见问题
