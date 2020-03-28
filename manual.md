@@ -624,7 +624,29 @@ DDoS保护问题，速率限制问题或基于位置的过滤问题的最常见�
 ### 市场结构 <a id="market-structure"></a>
 
 ```text
-{    'id'：'btcusd'，//用于在交换中引用的字符串文字    'symbol'：'BTC / USD'，//一对货币的大写字符串文字    'base'：'BTC'，//大写字符串，统一的基本货币代码，3个或更多字母    'quote'：'USD'，//大写字符串，统一报价货币代码，3个或更多字母    'baseId'：'btc'，//任何字符串，特定于交易所的基础货币ID    'quoteId'：'usd'，//任何字符串，特定于交易所的报价货币ID    'active'：true，//布尔值，市场状态    'precision'：{//“点后”的小数位数        'price'：8，// TICK_SIZE roundingMode的整数或浮点数，如果交易所未提供，则可能会丢失        'amount'：8，//整数，如果交易所未提供，则可能会丢失        'cost'：8，//整数，实际上很少有交易所    }，    'limits'：{//在此市场下单时的价值限制        '金额'：{            'min'：0.01，//订单金额应> min            'max'：1000，//订单金额应<max        }，        'price'：{...}，//订单价格的最小/最大限制相同        'cost'：{...}，//订单费用的相同限制=价格*金额    }，    'info'：{...}，//交易所未解析的原始市场信息}
+{
+    'id':     ' btcusd',  // string literal for referencing within an exchange
+    'symbol':  'BTC/USD', // uppercase string literal of a pair of currencies
+    'base':    'BTC',     // uppercase string, unified base currency code, 3 or more letters
+    'quote':   'USD',     // uppercase string, unified quote currency code, 3 or more letters
+    'baseId':  'btc',     // any string, exchange-specific base currency id
+    'quoteId': 'usd',     // any string, exchange-specific quote currency id
+    'active': true,       // boolean, market status
+    'precision': {        // number of decimal digits "after the dot"
+        'price': 8,       // integer or float for TICK_SIZE roundingMode, might be missing if not supplied by the exchange
+        'amount': 8,      // integer, might be missing if not supplied by the exchange
+        'cost': 8,        // integer, very few exchanges actually have it
+    },
+    'limits': {           // value limits when placing orders on this market
+        'amount': {
+            'min': 0.01,  // order amount should be > min
+            'max': 1000,  // order amount should be < max
+        },
+        'price': { ... }, // same min/max limits for the price of the order
+        'cost':  { ... }, // same limits for order cost = price * amount
+    },
+    'info':      { ... }, // the original unparsed market info from the exchange
+}
 ```
 
 每个市场都是具有以下键的关联数组（也称为字典）：
@@ -646,7 +668,24 @@ DDoS保护问题，速率限制问题或基于位置的过滤问题的最常见�
 ### 货币结构 <a id="currency-structure"></a>
 
 ```text
-{    'id'：'btc'，//用于在交换中引用的字符串文字    'code'：'BTC'，//大写统一字符串文字代码货币    'name'：'Bitcoin'，//字符串，人类可读的名称（如果指定）    'active'：true，//布尔值，货币状态（可交易和可提取）    ``费用''：0.123    'precision'：8，//点后的小数位数（取决于exchange.precisionMode）    'limits'：{//在此市场下单时的价值限制        '金额'：{            'min'：0.01，//订单金额应> min            'max'：1000，//订单金额应<max        }，        'price'：{...}，//订单价格的最小/最大限制相同        'cost'：{...}，//订单费用的相同限制=价格*金额        'withdraw'：{...}，//提款限额    }，    'info'：{...}，//交易所未解析的原始货币信息}
+{
+    'id':       'btc',     // string literal for referencing within an exchange
+    'code':     'BTC',     // uppercase unified string literal code the currency
+    'name':     'Bitcoin', // string, human-readable name, if specified
+    'active':    true,     // boolean, currency status (tradeable and withdrawable)
+    'fee':       0.123
+    'precision': 8,       // number of decimal digits "after the dot" (depends on exchange.precisionMode)
+    'limits': {           // value limits when placing orders on this market
+        'amount': {
+            'min': 0.01,  // order amount should be > min
+            'max': 1000,  // order amount should be < max
+        },
+        'price':    { ... }, // same min/max limits for the price of the order
+        'cost':     { ... }, // same limits for order cost = price * amount
+        'withdraw': { ... }, // withdrawal limits
+    },
+    'info': { ... }, // the original unparsed currency info from the exchange
+}
 ```
 
 每种货币都是具有以下键的关联数组（也称为字典）：
@@ -675,13 +714,15 @@ DDoS保护问题，速率限制问题或基于位置的过滤问题的最常见�
    * 的_量值_应该是&gt; = 0.05：
 
      ```text
-     +好：0.05、0.051、0.0501、0.0502，...，0.0599、0.06、0.0601，...-差：0.04、0.049、0.0499
+     + good: 0.05, 0.051, 0.0501, 0.0502, ..., 0.0599, 0.06, 0.0601, ...
+     - bad: 0.04, 0.049, 0.0499
      ```
 
    * _金额的精度_应最多为4个十进制数字：
 
      ```text
-     +好：0.05、0.051、0.052，...，0.0531，...，0.06，... 0.0719，...-差：0.05001、0.05000、0.06001
+     + good: 0.05, 0.051, 0.052, ..., 0.0531, ..., 0.06, ... 0.0719, ...
+     - bad: 0.05001, 0.05000, 0.06001
      ```
 
 2. `(market['limits']['price']['min'] == 0.0019) && (market['precision']['price'] == 5)`
@@ -691,42 +732,46 @@ DDoS保护问题，速率限制问题或基于位置的过滤问题的最常见�
    * 所述_价格值_应&gt; = 0.019：
 
      ```text
-     +良好：0.019，... 0.0191，... 0.01911，0.01912，...-差：0.016，...，0.01699
+     + good: 0.019, ... 0.0191, ... 0.01911, 0.01912, ...
+     - bad: 0.016, ..., 0.01699
      ```
 
    * _价格精度_应为5个小数位数或更少：
 
      ```text
-     +好：0.02、0.021、0.0212、0.02123、0.02124、0.02125，...-不好：0.017000、0.017001 ...
+     + good: 0.02, 0.021, 0.0212, 0.02123, 0.02124, 0.02125, ...
+     - bad: 0.017000, 0.017001, ...
      ```
 
 3. `(market['limits']['amount']['min'] == 50) && (market['precision']['amount'] == -1)`
    * 的_量的值_应大于或等于50：
 
      ```text
-     +好：50，60，70，80，90，100，... 2000，...-不好：1、2、3，...，9
+     + good: 50, 60, 70, 80, 90, 100, ... 2000, ...
+     - bad: 1, 2, 3, ..., 9
      ```
 
    * 负数_精度_表示该数量应为10的整数倍（达到指定的绝对功效）：
 
      ```text
-     +好：50，...，110，... 1230，...，1000000，...，1234560，...-不好：9.5，...，10.1，...，11，... 200.71，...
+     + good: 50, ..., 110, ... 1230, ..., 1000000, ..., 1234560, ...
+     - bad: 9.5, ... 10.1, ..., 11, ... 200.71, ...
      ```
 
-_在和PARAMS目前处于开发状态，有些字段可能在这里失踪，直到有统一的过程就完成了。这不会影响大多数订单，但是在非常大或非常小的订单的极端情况下可能会很重要。并非所有市场都支持和/或实施该标志。`precisionlimitsactive`_
+_在`precision` and `limits`PARAMS目前处于开发状态，有些字段可能在这里失踪，直到有统一的过程就完成了。这不会影响大多数订单，但是在非常大或非常小的订单的极端情况下可能会很重要。并非所有市场都支持和/或实施该标志。`precisionlimitsactive`_
 
 **关于精度和极限的注意事项**
 
 要求用户保持所有限制和精度！订单的值应满足以下条件：
 
-* 订单&gt; =`amountlimits['min']['amount']`
-* 订单&lt;=`amountlimits['max']['amount']`
-* 订单&gt; =`pricelimits['min']['price']`
-* 订单&lt;=`pricelimits['max']['price']`
-* 顺序（）&gt; =`costamount * pricelimits['min']['cost']`
-* 顺序（）&lt;=`costamount * pricelimits['max']['cost']`
-* 的精度必须&lt;=`amountprecision['amount']`
-* 的精度必须&lt;=`priceprecision['price']`
+* Order `amount` &gt;= `limits['min']['amount']`
+* Order `amount` &lt;= `limits['max']['amount']`
+* Order `price` &gt;= `limits['min']['price']`
+* Order `price` &lt;= `limits['max']['price']`
+* Order `cost` \(`amount * price`\) &gt;= `limits['min']['cost']`
+* Order `cost` \(`amount * price`\) &lt;= `limits['max']['cost']`
+* Precision of `amount` must be &lt;= `precision['amount']`
+* Precision of `price` must be &lt;= `precision['price']`
 
 在某些未从其API提供有关限制的信息或尚未实现这些信息的交易所中，上述值可能会丢失。
 
@@ -754,25 +799,29 @@ _在和PARAMS目前处于开发状态，有些字段可能在这里失踪，直�
 
 交换基类包含的方法可帮助将值格式化为所需的十进制精度，并支持不同的舍入，计数和填充模式。`decimalToPrecision`
 
-```text
-// JavaScript函数decimalToPrecision（x，roundingMode，numPrecisionDigits，countingMode = DECIMAL_PLACES，paddingMode = NO_PADDING）
+```javascript
+// JavaScript
+function decimalToPrecision (x, roundingMode, numPrecisionDigits, countingMode = DECIMAL_PLACES, paddingMode = NO_PADDING)
 ```
 
-```text
-＃Python＃ 警告！`decimal_to_precision`方法容易受到getcontext（）。prec的影响！def decimal_to_precision（n，rounding_mode = ROUND，precision = None，counting_mode = DECIMAL_PLACES，padding_mode = NO_PADDING）：
+```python
+# Python
+# WARNING! The `decimal_to_precision` method is susceptible to getcontext().prec!
+def decimal_to_precision(n, rounding_mode=ROUND, precision=None, counting_mode=DECIMAL_PLACES, padding_mode=NO_PADDING):
 ```
 
-```text
-// PHP函数decimalToPrecision（$ x，$ roundingMode = ROUND，$ numPrecisionDigits = null，$ countingMode = DECIMAL_PLACES，$ paddingMode = NO_PADDING）
+```php
+// PHP
+function decimalToPrecision ($x, $roundingMode = ROUND, $numPrecisionDigits = null, $countingMode = DECIMAL_PLACES, $paddingMode = NO_PADDING)
 ```
 
-有关如何使用来格式化字符串和浮点格式的示例，请参见以下文件：`decimalToPrecision`
+有关如何使用`decimalToPrecision`来格式化字符串和浮点格式的示例，请参见以下文件：
 
-* JavaScript的：[https://github.com/ccxt/ccxt/blob/master/js/test/base/functions/test.number.js](https://github.com/ccxt/ccxt/blob/master/js/test/base/functions/test.number.js)
-* 的Python：[https://github.com/ccxt/ccxt/blob/master/python/test/test\_decimal\_to\_precision.py](https://github.com/ccxt/ccxt/blob/master/python/test/test_decimal_to_precision.py)
+* JavaScript：[https://github.com/ccxt/ccxt/blob/master/js/test/base/functions/test.number.js](https://github.com/ccxt/ccxt/blob/master/js/test/base/functions/test.number.js)
+* Python：[https://github.com/ccxt/ccxt/blob/master/python/test/test\_decimal\_to\_precision.py](https://github.com/ccxt/ccxt/blob/master/python/test/test_decimal_to_precision.py)
 * PHP：[https://github.com/ccxt/ccxt/blob/master/php/test/decimal\_to\_precision.php](https://github.com/ccxt/ccxt/blob/master/php/test/decimal_to_precision.php)
 
-**Python警告！该方法易受getcontext（）。prec！`decimal_to_precision`**
+**Python WARNING! The `decimal_to_precision` method is susceptible to getcontext\(\).prec!**
 
 ### 加载市场 <a id="loading-markets"></a>
 
