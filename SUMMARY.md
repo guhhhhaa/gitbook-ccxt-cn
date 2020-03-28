@@ -1,7 +1,6 @@
 # Table of contents
 
 * [自述](README.md)
-* [自述2](readme2.md)
 * [自述维基](readme-wiki.md)
 * [资质认证](certification.md)
 * [贡献](contributing.md)
