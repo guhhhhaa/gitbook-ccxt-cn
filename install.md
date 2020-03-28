@@ -1,3 +1,7 @@
+---
+description: install
+---
+
 # 安装
 
 ### 安装 CCXT
@@ -160,7 +164,7 @@ You can also set them programmatically:
 
 当然也可以在代码中动态设置代理服务器：
 
-```text
+```python
 import ccxt
 exchange = ccxt.poloniex({
     'proxies': {
@@ -172,7 +176,7 @@ exchange = ccxt.poloniex({
 
 或：
 
-```text
+```python
 import ccxt
 exchange = ccxt.poloniex()
 exchange.proxies = {
@@ -185,7 +189,7 @@ exchange.proxies = {
 
 * [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-sync-python-requests-2-and-3.py)
 
-```text
+```python
 # -*- coding: utf-8 -*-
 
 import os
@@ -241,7 +245,7 @@ pprint(exchange.fetch_ticker('ETH/BTC'))
 
 * [https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py](https://github.com/ccxt/ccxt/blob/master/examples/py/proxy-asyncio-aiohttp-python-3.py)
 
-```text
+```python
 # -*- coding: utf-8 -*-
 
 import asyncio
@@ -328,7 +332,7 @@ To run your own CORS proxy locally you can either set up one of the existing one
 
 #### Node.js 版本的 CORS 代理服务器
 
-```text
+```javascript
 // JavaScript CORS Proxy
 // Save this in a file like cors.js and run with `node cors [port]`
 // It will listen for your requests on the port you pass in command line or port 8080 by default
@@ -341,7 +345,7 @@ require ('cors-anywhere').createServer ().listen (port, 'localhost')
 
 #### Python 版本的 CORS 代理服务器
 
-```text
+```python
 #!/usr/bin/env python
 # Python CORS Proxy
 # Save this in a file like cors.py and run with `python cors.py [port]` or `cors [port]`
