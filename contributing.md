@@ -123,7 +123,7 @@ CCXT 文件夹已映射到容器内部，但`node_modules`文件夹除外-容器
 
 存储库的内容结构如下：
 
-```text
+```python
 / # 根目录，也就是Node.js的npm module/package文件夹
 /.babelrc # 用于创建库的ES5版本的babel配置
 /.eslintrc # linter
@@ -276,7 +276,7 @@ Transpiler基于正则表达式，在很大程度上依赖于特定的格式设�
 
 **永远不要这样做：**
 
-```text
+```python
 async fetchTicker (symbol, params = {}) {
    const request = {
       'pair': symbol, // 非常糟糕，直接向交易所发送统一的符号
@@ -288,7 +288,7 @@ async fetchTicker (symbol, params = {}) {
 
 **不要这样做：**
 
-```text
+```python
 async fetchTicker (symbol, params = {}) {
    const request = {
       'symbol': symbol, // 非常糟糕，直接向交易所发送统一的符号
