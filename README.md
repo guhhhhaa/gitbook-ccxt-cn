@@ -208,15 +208,15 @@ CCXT库当前支持以下121个加密货币交易市场和交易API：
 
 安装CCXT库的最简单方法是使用程序包管理器：
 
-* [ccxt在**NPM**](https://www.npmjs.com/package/ccxt)（JavaScript的/节点V7.6 +）
-* [在ccxt **的PyPI**](https://pypi.python.org/pypi/ccxt)（Python 2和3.5.3+）
-* [ccxt在**Packagist /作曲者**](https://packagist.org/packages/ccxt/ccxt)（PHP 5.4+）
+* [ccxt in **NPM**](https://www.npmjs.com/package/ccxt) \(JavaScript / Node v7.6+\)
+* [ccxt in **PyPI**](https://pypi.python.org/pypi/ccxt) \(Python 2 and 3.5.3+\)
+* [ccxt in **Packagist/Composer**](https://packagist.org/packages/ccxt/ccxt) \(PHP 5.4+\)
 
 该库作为具有最小依赖性和要求的多模块模块实现提供：
 
-* 在JavaScript[`js/`](https://github.com/ccxt/ccxt/blob/master/js/)
-* 在Python（从JS生成）[`python/`](https://github.com/ccxt/ccxt/blob/master/python/)
-* 在PHP（从JS生成）[`php/`](https://github.com/ccxt/ccxt/blob/master/php/)
+* [`js/`](https://github.com/ccxt/ccxt/blob/master/js/) in JavaScript
+* [`python/`](https://github.com/ccxt/ccxt/blob/master/python/) in Python \(generated from JS\)
+* [`php/`](https://github.com/ccxt/ccxt/blob/master/php/) in PHP \(generated from JS\)
 
 您也可以将其从[ccxt GitHub存储](https://github.com/ccxt/ccxt)库克隆到项目目录中：
 
@@ -226,19 +226,21 @@ git clone https://github.com/ccxt/ccxt.git
 
 ### JavaScript（NPM） <a id="javascript-npm"></a>
 
-CCXT的JavaScript版本可在Node和Web浏览器中使用。需要ES6和语法支持（节点7.6.0+）。使用Webpack和Babel进行编译时，请确保`async/await`[未](https://github.com/ccxt/ccxt/issues/225#issuecomment-331905178)在配置中[排除](https://github.com/ccxt/ccxt/issues/225#issuecomment-331905178)它。`babel-loader`
+CCXT的JavaScript版本可在Node和Web浏览器中使用。需要ES6和`async/await`语法支持（节点7.6.0+）。使用Webpack和Babel进行编译时，请确保[未](https://github.com/ccxt/ccxt/issues/225#issuecomment-331905178)在`babel-loader`配置中[排除](https://github.com/ccxt/ccxt/issues/225#issuecomment-331905178)它。
 
-[ccxt在**NPM**](https://www.npmjs.com/package/ccxt)
-
-```text
-npm安装ccxt
-```
+[ccxt in **NPM**](https://www.npmjs.com/package/ccxt)
 
 ```text
-var ccxt = require （'ccxt' ）  ​控制台。日志（ccxt 。交流）//打印所有可用的交流  
+npm install ccxt
 ```
 
-### JavaScript（用于标记）：`<script>` <a id="javascript-for-use-with-the-less-than-script-greater-than-tag"></a>
+```javascript
+var ccxt = require ('ccxt')
+
+console.log (ccxt.exchanges) // print all availa
+```
+
+### JavaScript（与`<script>`标记一起使用）： <a id="javascript-for-use-with-the-less-than-script-greater-than-tag"></a>
 
 通过您选择的CDN提供的多合一浏览器捆绑包（包括依赖项）：
 
@@ -248,50 +250,52 @@ var ccxt = require （'ccxt' ）  ​控制台。日志（ccxt 。交流）//打
 CDN不会实时更新，可能会有延迟。不建议默认为最新版本而不指定版本号。请记住，我们对那些CDN服务器的正确操作不承担任何责任。
 
 ```text
-< 脚本类型=“ text / javascript ” src =“ https://cdn.jsdelivr.net/npm/ccxt@1.25.27/dist/ccxt.browser.js ” > </ 脚本>  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ccxt@1.25.27/dist/ccxt.browser.js"></script>
 ```
 
 创建一个全局对象：`ccxt`
 
 ```text
-控制台。日志（ccxt 。交流）//打印所有可用的交流  
+console.log (ccxt.exchanges) //打印所有可用的交换
 ```
 
 ### 蟒蛇 <a id="python"></a>
 
-[ccxt中**的PyPI**](https://pypi.python.org/pypi/ccxt)
+[ccxt in **PyPI**](https://pypi.python.org/pypi/ccxt)
 
-```text
-点安装ccxt
+```python
+pip install ccxt
 ```
 
-```text
-导入ccxt打印（ccxt 。交流）＃打印所有可用的交换类的列表 
+```python
+import ccxt
+print(ccxt.exchanges) ＃ 打印所有可用的交换类的列表 
 ```
 
 该库在Python 3.5.3+中支持asyncio和async / await的并发异步模式。
 
 ```text
-导入ccxt 。async_support as ccxt ＃链接到ccxt的异步版本
+import ccxt.async_support as ccxt ＃链接到ccxt的异步版本
 ```
 
-### 的PHP <a id="php"></a>
+### PHP
 
-[ccxt在PHP与**Packagist /作曲者**](https://packagist.org/packages/ccxt/ccxt)（PHP 5.4+）
+[ccxt in PHP with **Packagist/Composer**](https://packagist.org/packages/ccxt/ccxt) \(PHP 5.4+\)
 
 它需要通用的PHP模块：
 
-* 卷曲
-* mbstring（强烈建议使用UTF-8）
-* 聚四氟乙烯
-* 图标
+* cURL
+* mbstring \(强烈建议使用UTF-8\)
+* PCRE
+* iconv
 * gmp（这是PHP 7.2+的内置扩展）
 
 ```text
-包括“ ccxt.php” ； 的var_dump （\ ccxt \ 交易所：：$交流）; //打印所有可用交换类的列表 
+include "ccxt.php";
+var_dump (\ccxt\Exchange::$exchanges); //打印所有可用交换类的列表 
 ```
 
-### 码头工人 <a id="docker"></a>
+### Docker
 
 您可以将CCXT以及所有支持的语言和依赖项安装在容器中。如果您想为CCXT做出贡献，这可能会很有用（例如，运行构建脚本和测试- 有关详细信息，请参阅[贡献](https://github.com/ccxt/ccxt/blob/master/CONTRIBUTING.md)文档）。
 
